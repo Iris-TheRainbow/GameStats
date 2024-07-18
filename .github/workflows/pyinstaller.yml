@@ -1,0 +1,41 @@
+on:
+  push:
+    branches:
+      - main
+  release:
+    types: [published]
+
+jobs:
+  pyinstaller-build-mac:
+    runs-on: macos-latest
+    steps:
+      - name: Create Executable
+        uses: unofficial-rev-port/pyinstaller@v1.2
+        with:
+          python_ver: "3.12"
+          pyinstaller_ver: "==6.6.0"
+          spec: "main.spec"
+          clean_checkout: false
+          upload_exe_with_name: "gamestats_mac"
+  pyinstaller-build-win:
+    runs-on: windows-latest
+    steps:
+      - name: Create Executable
+        uses: unofficial-rev-port/pyinstaller@v1.2
+        with:
+          python_ver: "3.12"
+          pyinstaller_ver: "==6.6.0"
+          spec: "main.spec"
+          clean_checkout: false
+          upload_exe_with_name: "gamestats_win.exe"
+  pyinstaller-build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Executable
+        uses: unofficial-rev-port/pyinstaller@v1.2
+        with:
+          python_ver: "3.12"
+          pyinstaller_ver: "==6.6.0"
+          spec: "main.spec"
+          clean_checkout: false
+          upload_exe_with_name: "gamestats_linux"
