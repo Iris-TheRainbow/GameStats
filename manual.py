@@ -17,6 +17,7 @@ class manual:
                 print(command.name + ': ')
                 print(command.short)
                 print(command.alt)
+
     @staticmethod
     def all():
         manual.single('')

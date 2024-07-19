@@ -12,6 +12,7 @@ def getFiles():
         print('please add library game lists to ~/.gamestats/gmames/')
         exit()
     return files
+
 def find(string):
     files = getFiles()
     list = []
@@ -54,6 +55,14 @@ def number(string, ret = False):
     if ret:
         print("There are " + str(num) + ' games total across all libraries')
 
+def libraries():
+    files = getFiles()
+    print('Your game libraries are:')
+    for file in files:
+        print(file)
+
+def version():
+    print('GameStats: Version: v0.1.0')
 
 def numberAll():
     number('')

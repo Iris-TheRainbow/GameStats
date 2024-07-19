@@ -12,9 +12,5 @@ Searches through all your libraries for games names containg the string. All str
 ### number
 Finds the number of games in a given library. No argumens will find the number of games in each library. All will combine the number from each library into one list. Any other string will be used to find a library name to search
 
-### libraries
-Libraries are lists of your games put in ~/.gamestats/games
-Libraries are just text list of games, stored in extnsionless files with the name of their launcher
-
 ### help
 Shows the help page
