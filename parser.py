@@ -5,8 +5,7 @@ class parser:
 
     def check(self, args):
         string = args[0]
-        args = args.pop(0)
-        print(args)
+        args.pop(0)
         for command in self.commands:
                 for name in command[0]:
                     if name == string:
@@ -34,4 +33,5 @@ class parser:
                 if not name == command[0][-1]:
                     names += ', '
             cmdname = str(command[1].__name__)
+
             print(str(names) + ': ' + cmdname + '()')

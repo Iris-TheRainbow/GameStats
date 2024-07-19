@@ -3,36 +3,40 @@ import time
 import os
 def getFiles():
     dir = os.path.expanduser('~')
+
     if not os.path.exists(dir + '/.gamestats'):
         os.mkdir(dir + '/.gamestats')
+
     if not os.path.exists(dir + '/.gamestats/games'):
         os.mkdir(dir + '/.gamestats/games')
+
     files = glob.glob(dir + '/.gamestats/games/*')
     if len(files) == 0:
         print('please add library game lists to ~/.gamestats/gmames/')
         exit()
+
     return files
 
 def argsToString(args):
     try:
         string = ''
-        args.pop(0)
         for i in range(len(args)):
             string += args[i]
             if i+1 != len(args):
                 string += ' '
     except AttributeError:
         string = args
+
     return string
 
 def find(args):
-    string = args[0]
     args = argsToString(args)
     files = getFiles()
     list = []
     for file in files:
         with open(file) as f:
             list.append((file, f.read().splitlines()))
+
     found = []
     result = []
     for library in list:
@@ -40,25 +44,33 @@ def find(args):
         index = 0
         result = []
         for game in games:
-                if string.lower() in game.lower():
+                if args.lower() in game.lower():
                     result.append(game)
+
         if result == []:
             continue
+
         print(library[0].split('/')[-1] + ':')
         for i in range(len(result)):
             print(result[i])
 
 def number(args):
-    ret = False
-    string = args[0]
-    if string == 'all':
-        ret = True
+    combine = False
+    try:
+        string = args[0]
+    except IndexError:
         string = ''
+
+    if string == 'all':
+        combine = True
+        string = ''
+
     files = getFiles()
     libs = []
     for file in files:
         if string in file:
             libs.append(file)
+
     num = 0
     for lib in libs:
         number = 0
@@ -66,9 +78,9 @@ def number(args):
             games = f.read().splitlines()
             number = len(games)
             num += number
-            if not ret:
+            if not combine:
                 print('There are ' + str(number) + ' games in ' + lib.split('/')[-1])
-    if ret:
+    if combine:
         print("There are " + str(num) + ' games total across all libraries')
 
 def libraries(args):
