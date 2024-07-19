@@ -13,7 +13,21 @@ def getFiles():
         exit()
     return files
 
-def find(string):
+def argsToString(args):
+    try:
+        string = ''
+        args.pop(0)
+        for i in range(len(args)):
+            string += args[i]
+            if i+1 != len(args):
+                string += ' '
+    except AttributeError:
+        string = args
+    return string
+
+def find(args):
+    string = args[0]
+    args = argsToString(args)
     files = getFiles()
     list = []
     for file in files:
@@ -34,7 +48,9 @@ def find(string):
         for i in range(len(result)):
             print(result[i])
 
-def number(string, ret = False):
+def number(args):
+    ret = False
+    string = args[0]
     if string == 'all':
         ret = True
         string = ''
@@ -55,14 +71,17 @@ def number(string, ret = False):
     if ret:
         print("There are " + str(num) + ' games total across all libraries')
 
-def libraries():
+def libraries(args):
     files = getFiles()
     print('Your game libraries are:')
     for file in files:
         print(file)
 
-def version():
+def version(args):
     print('GameStats: Version: v0.1.0')
 
-def numberAll():
+def close(args):
+    exit()
+
+def numberAll(args):
     number('')

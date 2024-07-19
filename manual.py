@@ -1,3 +1,4 @@
+import scripts
 class manPage():
     def __init__(self, name, short, alt):
         self.name = name
@@ -19,5 +20,6 @@ class manual:
                 print(command.alt)
 
     @staticmethod
-    def all():
-        manual.single('')
+    def manual(args):
+        string = scripts.argsToString(args)
+        manual.single(string)

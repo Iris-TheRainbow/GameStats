@@ -6,6 +6,7 @@ class parser:
     def check(self, args):
         string = args[0]
         args = args.pop(0)
+        print(args)
         for command in self.commands:
                 for name in command[0]:
                     if name == string:
@@ -28,7 +29,7 @@ class parser:
     def list(self):
         for command in self.commands:
             names = ''
-            for name in self.commands[0]:
+            for name in command[0]:
                 names += name
                 if not name == command[0][-1]:
                     names += ', '
