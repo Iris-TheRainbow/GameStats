@@ -32,3 +32,5 @@ Finds the number of games in a given library. No argumens will find the number o
 
 ### help
 Shows the help page
+
+![image](https://github.com/user-attachments/assets/235a3b86-9d39-472a-ab2c-fd65ee12dbcc)
